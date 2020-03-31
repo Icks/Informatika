@@ -1,8 +1,20 @@
 (() => {
   const textureLoader = new THREE.TextureLoader();
 
+  let moveForward = false;
+  let moveBackward = false;
+  let moveLeft = false;
+  let moveRight = false;
+
+  const velocity = new THREE.Vector3();
+
   const canvas = document.querySelector('#informatics'); // Get canvas
+  const startButton = document.querySelector('#startButton'); // Get canvas
   const renderer = new THREE.WebGLRenderer({canvas});
+
+  // Scene
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color('#7ac4f0');
 
   // Camera
   const cameraOptions = {
@@ -14,14 +26,76 @@
   const camera = new THREE.PerspectiveCamera(cameraOptions.fov, cameraOptions.aspect, cameraOptions.near, cameraOptions.far);
 
   // Controls
-  const controls = new THREE.OrbitControls(camera, canvas);
-  controls.maxPolarAngle = 1.57
-  controls.keyPanSpeed = 20
-  controls.update();
+  const orbitControls = new THREE.OrbitControls(camera, canvas);
+  orbitControls.maxPolarAngle = 1.57
+  orbitControls.keyPanSpeed = 20
+  orbitControls.update();
+  const pointerControls = new THREE.PointerLockControls(camera, document.body);
+  startButton.addEventListener('click', function () {
+    pointerControls.lock();
+  });
 
-  // Scene
-  const scene = new THREE.Scene();
-  scene.background = new THREE.Color('#7ac4f0');
+  const onKeyDown = function ( event ) {
+    switch ( event.keyCode ) {
+
+      case 38: // up
+      case 87: // w
+        moveForward = true;
+        velocity.z = 1;
+        break;
+
+      case 37: // left
+      case 65: // a
+        moveLeft = true;
+        velocity.x = -1;
+        break;
+
+      case 40: // down
+      case 83: // s
+        moveBackward = true;
+        velocity.z = -1;
+        break;
+
+      case 39: // right
+      case 68: // d
+        moveRight = true;
+        velocity.x = 1;
+        break;
+
+    }
+  };
+
+  const onKeyUp = function ( event ) {
+
+    switch ( event.keyCode ) {
+
+      case 38: // up
+      case 87: // w
+        moveForward = false;
+        break;
+
+      case 37: // left
+      case 65: // a
+        moveLeft = false;
+        break;
+
+      case 40: // down
+      case 83: // s
+        moveBackward = false;
+        break;
+
+      case 39: // right
+      case 68: // d
+        moveRight = false;
+        break;
+
+    }
+    velocity.z = 0;
+    velocity.x = 0;
+  };
+
+  document.addEventListener( 'keydown', onKeyDown );
+  document.addEventListener( 'keyup', onKeyUp );
 
   // Light (Further experiments needed)
   const hemOptions = {
@@ -133,8 +207,8 @@
       frameArea(boxSize * 0.5, boxSize, boxCenter, camera);
 
       // update the Trackball controls to handle the new size
-      controls.maxDistance = boxSize * 4;
-      controls.target.copy(boxCenter);
+      orbitControls.maxDistance = boxSize * 4;
+      orbitControls.target.copy(boxCenter);
     });
   }
 
@@ -150,7 +224,11 @@
   }
 
   function render() {
-    controls.update();
+    // orbitControls.update();
+    if ( pointerControls.isLocked === true ) {
+      pointerControls.moveForward( velocity.z );
+      pointerControls.moveRight( velocity.x );
+    }
     if (resizeRendererToDisplaySize(renderer)) {
       const canvas = renderer.domElement;
       camera.aspect = canvas.clientWidth / canvas.clientHeight;
