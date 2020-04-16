@@ -19,8 +19,22 @@ export const gltfSetup = (scene, orbitControls, camera, canvas) => {
       });
 
       const root = gltf.scene;
+      const glasses = root.children.filter((children) => {
+        const properties = children.name.split('_');
+        return properties[0] === 'glass';
+      });
 
-       // dumpObject(root);
+      glasses.forEach((glass) => {
+        if (glass.children.length) {
+          glass.children[1].material.transparent = true;
+          glass.children[1].material.transparency = 0.1;
+          glass.children[1].material.color = {r: 240, g: 248, b: 255};
+          glass.children[1].material.opacity = 0.2;
+        }
+      })
+
+
+      // dumpObject(root);
       scene.add(root);
 
       // compute the box that contains all the stuff

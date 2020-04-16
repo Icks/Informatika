@@ -31,10 +31,10 @@ export const render = (scene, camera, renderer, pointerControls, movement, veloc
     }
 
     if (movement.up) {
-      velocity.y += 1
+      velocity.y += 5
     }
     if (movement.down) {
-      velocity.y -= 1
+      velocity.y -= 5
     }
 
     pointerControls.moveForward(velocity.z);
