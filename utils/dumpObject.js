@@ -7,5 +7,5 @@ export const dumpObject = (obj, lines = [], isLast = true, prefix = '') => {
     const isLast = ndx === lastNdx;
     dumpObject(child, lines, isLast, newPrefix);
   });
-  console.log(lines);
+  console.log(lines.join('\n'));
 }

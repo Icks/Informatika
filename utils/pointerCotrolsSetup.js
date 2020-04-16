@@ -8,25 +8,25 @@ export const pointerControlsSetup = (camera, canvas, velocity, scene, movement) 
       case 38: // up
       case 87: // w
         movement.forward = true;
-        velocity.z = 0.5;
+        velocity.z = 30;
         break;
 
       case 37: // left
       case 65: // a
         movement.left = true;
-        velocity.x = -0.1;
+        velocity.x = -1;
         break;
 
       case 40: // down
       case 83: // s
         movement.backward = true;
-        velocity.z = -0.1;
+        velocity.z = -30;
         break;
 
       case 39: // right
       case 68: // d
         movement.right = true;
-        velocity.x = 0.1;
+        velocity.x = 1;
         break;
 
       case 82: // r

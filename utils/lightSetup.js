@@ -1,5 +1,5 @@
 const hemOptions = {
-  skyColor: 0xf2f2f2,
+  skyColor: 0xC9CBCA,
   groundColor: 0xffffff,
   intensity: 1
 };

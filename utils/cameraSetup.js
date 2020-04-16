@@ -2,7 +2,7 @@ const cameraOptions = {
   fov: 50,
   aspect: window.innerWidth / window.innerHeight,
   near: 0.1,
-  far: 10000
+  far: 100000
 };
 
 export const cameraSetup = () => {
