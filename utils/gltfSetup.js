@@ -3,7 +3,19 @@ import {dumpObject} from "./dumpObject.js";
 
 const loader = document.querySelector('#loader'); // Get loader
 const perentageLoaded = document.querySelector('#perentageLoaded'); // Get percentage
-const startButton = document.querySelector('#startButton'); // Get startButton
+// const startButton = document.querySelector('#startButton'); // Get startButton
+const secondFloor = document.querySelector('#secondFloor'); // Get startButton
+const thirdFloor = document.querySelector('#thirdFloor'); // Get startButton
+// const EC = document.querySelector('#EC'); // Get startButton
+const BigLectureHall = document.querySelector('#BigLectureHall'); // Get startButton
+const Laboratory = document.querySelector('#Laboratory'); // Get startButton
+
+const blocker = document.querySelector('#blocker');
+const instructions = document.querySelector('#instructions');
+
+const instruct = document.querySelector('#instruct');
+const position = document.querySelector('#position');
+
 
 export const gltfSetup = (scene, orbitControls, camera, canvas) => {
 
@@ -18,6 +30,7 @@ export const gltfSetup = (scene, orbitControls, camera, canvas) => {
         }
       });
 
+
       const root = gltf.scene;
       const glasses = root.children.filter((children) => {
         const properties = children.name.split('_');
@@ -30,8 +43,10 @@ export const gltfSetup = (scene, orbitControls, camera, canvas) => {
           glass.children[1].material.transparency = 0.1;
           glass.children[1].material.color = {r: 240, g: 248, b: 255};
           glass.children[1].material.opacity = 0.2;
+
         }
       })
+      // console.log(children);
 
 
       // dumpObject(root);
@@ -54,33 +69,40 @@ export const gltfSetup = (scene, orbitControls, camera, canvas) => {
       const percentage = (xhr.loaded / xhr.total * 100)
       perentageLoaded.innerHTML = `${percentage.toFixed(0)}`
       if (percentage === 100) {
-        // gltfLoader.load('./models/tree_tut.glb', (gltf) => {
-        //
-        //   // Treats all mesh materials as individual entities
-        //   gltf.scene.traverse((child) => {
-        //     if (child.isMesh) {
-        //       child.material = child.material.clone();
-        //     }
-        //   });
-        //
-        //   const root = gltf.scene;
-        //   scene.add(root);
-        //
-        //   const box = new THREE.Box3().setFromObject(root);
-        //   const boxSize = box.getSize(new THREE.Vector3()).length();
-        //   const boxCenter = box.getCenter(new THREE.Vector3());
-        //   frameArea(boxSize, boxSize, boxCenter, camera);
-        //
-        //   orbitControls.target.copy(boxCenter);
-        // })
-
         setTimeout(() => {
-          canvas.style.visibility = 'visible'
+          canvas.style.visibility = 'visible';
+          canvas.style.visibility = 'visible';
+
+          instruct.style.visibility = 'visible'
           startButton.style.visibility = 'visible'
+          secondFloor.style.visibility = 'visible';
+          thirdFloor.style.visibility = 'visible';
+          instructions.style.visibility = 'visible';
+          blocker.style.visibility = 'visible';
+          BigLectureHall.style.visibility = 'visible';
+          Laboratory.style.visibility = 'visible';
+
+          position.style.visibility = 'visible';
+
+
           loader.style.visibility = 'hidden'
         }, 1000)
       }
     }, (error) => {
       console.log('An error happened', error);
     });
+
+
+  gltfLoader.load('./models/tree_tut2.glb', (gltf) => {
+    const originalTree = gltf.scene;
+
+    let x = 4000;
+    for (let i = 0; i < 6; i++) {
+      const tree = originalTree.clone()
+      tree.position.set(x, 0, -2500);
+      tree.scale.set(15, 15, 10);
+      scene.add(tree);
+      x -= 1500
+    }
+  })
 }

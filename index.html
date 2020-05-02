@@ -12,22 +12,25 @@
       height: 100vh;
     }
 
-    .app{
+    .app {
       height: 100vh;
     }
 
-    #loader{
+    #loader {
       top: 45%;
       left: 45%;
       position: absolute;
     }
-    #loader div{
+
+    #loader div {
       height: 100px;
       width: 100px;
     }
-    #loader p{
+
+    #loader p {
       text-align: center;
     }
+
     #informatics {
       width: 100%;
       height: 100%;
@@ -39,20 +42,135 @@
       visibility: hidden;
     }
 
+    #blocker {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      visibility: hidden;
+    }
+
+    #instructions {
+      width: 100%;
+      height: 100%;
+      visibility: hidden;
+
+      display: -webkit-box;
+      display: -moz-box;
+      display: box;
+
+      -webkit-box-orient: horizontal;
+      -moz-box-orient: horizontal;
+      box-orient: horizontal;
+
+      -webkit-box-pack: center;
+      -moz-box-pack: center;
+      box-pack: center;
+
+      -webkit-box-align: center;
+      -moz-box-align: center;
+      box-align: center;
+
+      color: #ffffff;
+      text-align: center;
+      font-family: Arial;
+      font-size: 18px;
+      line-height: 24px;
+
+      cursor: pointer;
+    }
+
+    #instruct {
+      padding:10px;
+      position: absolute;
+      right: 0;
+      visibility: hidden;
+      background-color: rgba(0,0,0,0.5);
+    }
+    #instruct p{
+      color:white;
+      text-align: right;
+      margin-bottom: 0px;
+    }
+
+    #secondFloor {
+      position: absolute;
+      right: 0;
+      top: 200px;
+      visibility: hidden;
+    }
+
+    #thirdFloor {
+      position: absolute;
+      right: 0;
+      top: 300px;
+      visibility: hidden;
+    }
+
+    #BigLectureHall {
+      position: absolute;
+      right: 0;
+      top: 400px;
+      visibility: hidden;
+    }
+
+    #Laboratory {
+      position: absolute;
+      right: 0;
+      top: 500px;
+      visibility: hidden;
+    }
+
+    #position {
+      position: absolute;
+      right: 0;
+      top: 600px;
+      visibility: hidden;
+      color: white;
+    }
+
+
   </style>
 </head>
 <body>
 <div class="app">
-  <button id="startButton" type="button" class="btn btn-primary btn-lg">Activate first person camera</button>
+  <div id="instruct">
+    <p>Press the number to navigate to the location. </p>
+    <p>Example: Press 1 to navigate to the cafeteria</p>
+    <p>1: Cafeteria</p>
+    <p>2: Entrance</p>
+  </div>
+  <button id="startButton" type="button" class="btn btn-primary btn-lg">start</button>
+  <button id="secondFloor" type="button" class="btn btn-primary btn-lg">secondFloor</button>
+  <button id="thirdFloor" type="button" class="btn btn-primary btn-lg">thirdFloor</button>
+  <!--  <button id="EC" type="button" class="btn btn-primary btn-lg">EC</button>-->
+  <button id="BigLectureHall" type="button" class="btn btn-primary btn-lg">BigLectureHall</button>
+  <button id="Laboratory" type="button" class="btn btn-primary btn-lg">Laboratory</button>
+  <p id="position">Position: <span id="xyzPosition">0</span></p>
+
+
+  <div id="blocker">
+    <div id="instructions">
+      <span style="font-size:36px">Instructions</span>
+      <br/><br/>
+      Move: WASD or Arrow keys <br/>
+      Up: R<br/>
+      Down: F<br/>
+      Look: MOUSE
+    </div>
+
+  </div>
+
   <div id="loader">
     <div class="spinner-border text-info" role="status">
       <span class="sr-only">Loading...</span>
     </div>
     <p><span id="perentageLoaded">0</span>% loaded</p>
   </div>
-
   <canvas id="informatics"></canvas>
 </div>
+
+
 <div>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
           integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
