@@ -40,6 +40,8 @@
     #startButton {
       position: absolute;
       visibility: hidden;
+      border-radius: 50%;
+      background-color: black;
     }
 
     #blocker {
@@ -73,60 +75,63 @@
 
       color: #ffffff;
       text-align: center;
-      font-family: Arial;
+      font-family: "Arial Black";
       font-size: 18px;
       line-height: 24px;
 
       cursor: pointer;
     }
 
-    #instruct {
-      padding:10px;
-      position: absolute;
-      right: 0;
-      visibility: hidden;
-      background-color: rgba(0,0,0,0.5);
-    }
     #instruct p{
       color:white;
       text-align: right;
       margin-bottom: 0px;
     }
+      .location {
+        /*position: absolute;*/
+        right: 0;
+        visibility: hidden;
+        background-color: black;
+        width: 180px;
+        margin: 10px 10px 0 0;
+
+      }
+
+      .buttonContainer{
+        display: flex;
+        /*justify-content:flex-start;*/
+        flex-direction: column;
+        position: fixed;
+        top: 5%;
+        right: 0;
+              }
+    }
+
+    #cafeteria {
+      top: 100px;
+    }
+
 
     #secondFloor {
-      position: absolute;
-      right: 0;
       top: 200px;
-      visibility: hidden;
     }
 
     #thirdFloor {
-      position: absolute;
-      right: 0;
       top: 300px;
-      visibility: hidden;
     }
 
     #BigLectureHall {
-      position: absolute;
-      right: 0;
       top: 400px;
-      visibility: hidden;
     }
 
-    #Laboratory {
-      position: absolute;
-      right: 0;
+    #laboratory {
       top: 500px;
-      visibility: hidden;
     }
 
     #position {
-      position: absolute;
-      right: 0;
       top: 600px;
-      visibility: hidden;
       color: white;
+      padding: 10px;
     }
 
 
@@ -134,29 +139,31 @@
 </head>
 <body>
 <div class="app">
-  <div id="instruct">
-    <p>Press the number to navigate to the location. </p>
-    <p>Example: Press 1 to navigate to the cafeteria</p>
-    <p>1: Cafeteria</p>
-    <p>2: Entrance</p>
+  <button id="startButton" type="button" class="btn btn-primary btn-lg" >Start</button>
+  <div class="buttonContainer">
+    <button id="cafeteria" type="button" class="btn btn-primary btn-lg location">Cafeteria</button>
+    <button id="entrance" type="button" class="btn btn-primary btn-lg location">Entrance</button>
+    <button id="secondFloor" type="button" class="btn btn-primary btn-lg location">Second Floor</button>
+    <button id="thirdFloor" type="button" class="btn btn-primary btn-lg location">Third Floor</button>
+    <button id="BigLectureHall" type="button" class="btn btn-primary btn-lg location">Big Lecture Hall</button>
+    <button id="laboratory" type="button" class="btn btn-primary btn-lg location">Laboratory</button>
+    <p id="position" class="location">Position: <span id="xyzPosition">0</span></p>
   </div>
-  <button id="startButton" type="button" class="btn btn-primary btn-lg">start</button>
-  <button id="secondFloor" type="button" class="btn btn-primary btn-lg">secondFloor</button>
-  <button id="thirdFloor" type="button" class="btn btn-primary btn-lg">thirdFloor</button>
-  <!--  <button id="EC" type="button" class="btn btn-primary btn-lg">EC</button>-->
-  <button id="BigLectureHall" type="button" class="btn btn-primary btn-lg">BigLectureHall</button>
-  <button id="Laboratory" type="button" class="btn btn-primary btn-lg">Laboratory</button>
-  <p id="position">Position: <span id="xyzPosition">0</span></p>
 
 
   <div id="blocker">
     <div id="instructions">
+      <span style="font-size:36px">Welcome to the Informatics Building</span>
+      <br/><br/>
       <span style="font-size:36px">Instructions</span>
       <br/><br/>
       Move: WASD or Arrow keys <br/>
       Up: R<br/>
       Down: F<br/>
-      Look: MOUSE
+      Look: MOUSE <br/>
+      Esc: Activate mouse cursor. <br/><br/>
+      <span style="font-size:36px">Click to Start</span>
+
     </div>
 
   </div>

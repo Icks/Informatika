@@ -3,7 +3,7 @@ import {raycasterSetup} from "./raycasterSetup.js";
 
 const xyzPosition = document.querySelector('#xyzPosition');
 
-const {leftRaycaster, rightRaycaster} = raycasterSetup()
+const {leftRaycaster, rightRaycaster} = raycasterSetup();
 
 const intersects = {
   left: undefined,
@@ -42,6 +42,7 @@ export const render = (scene, camera, renderer, pointerControls, movement, veloc
     pointerControls.moveForward(velocity.z);
     pointerControls.moveRight(velocity.x);
     pointerControls.getObject().position.y = velocity.y;
+
   }
 
   if (resizeRenderer(renderer)) {

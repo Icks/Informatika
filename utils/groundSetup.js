@@ -7,7 +7,8 @@ export const groundSetup = (scene) => {
 
   const material = new THREE.MeshLambertMaterial({map: texture});
   const mesh = new THREE.Mesh(new THREE.PlaneBufferGeometry(200000, 200000), material);
-  mesh.position.y = -90;
+   mesh.position.y = -100;
+  // mesh.position.y = -999;
   mesh.rotation.x = -Math.PI / 2;
 
   scene.add(mesh);

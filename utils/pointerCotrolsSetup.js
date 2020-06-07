@@ -1,4 +1,4 @@
-const startButton = document.querySelector('#startButton'); // Get canvas
+ const startButton = document.querySelector('#startButton'); // Get canvas
 
 export const pointerControlsSetup = (camera, canvas, velocity, scene, movement) => {
 
