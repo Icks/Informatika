@@ -10,9 +10,12 @@ const BigLectureHall = document.querySelector('#BigLectureHall'); // BigLectureH
 const entrance = document.querySelector('#entrance'); // Get  entrance
 const cafeteria = document.querySelector('#cafeteria'); // Get cafeteria
 const Laboratories = document.querySelector('#laboratory'); // Get Laborato
+const block = document.querySelector('#block'); // Get startButton
+
 
 const blocker = document.querySelector('#blocker');
 const instructions = document.querySelector('#instructions');
+
 
 const position = document.querySelector('#position');
 
@@ -38,20 +41,8 @@ export const gltfSetup = (scene, orbitControls, camera, canvas) => {
         return properties[0] === 'glass';
       });
 
-      // const dooroot = gltf.scene;
-      // console.log(dumpObject(root).join('\n'));
-      // doors = root.getObjectByName('glass_door_groundSideBuilding_70');
-      // // console.log(doors)
-      // // if (doors) {
-      //   for (const door of doors.children) {
-      //     // door.rotation.x = time;
-      //     console.log(door.material)
-      //     door.material.color = {r:0,g:0,b:0}
-      //   }
-      // }
 
       glasses.forEach((glass) => {
-        // console.log(glass);
         if (glass.children.length) {
           glass.children[1].material.transparent = true;
           glass.children[1].material.transparency = 0.1;
@@ -61,9 +52,6 @@ export const gltfSetup = (scene, orbitControls, camera, canvas) => {
         }
       })
 
-
-
-      // dumpObject(root);
       scene.add(root);
 
 
@@ -95,6 +83,8 @@ export const gltfSetup = (scene, orbitControls, camera, canvas) => {
           blocker.style.visibility = 'visible';
           BigLectureHall.style.visibility = 'visible';
           Laboratories.style.visibility = 'visible';
+          block.style.visibility = 'visible';
+
 
           cafeteria.style.visibility = 'visible';
           entrance.style.visibility = 'visible';

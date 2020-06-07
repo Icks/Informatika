@@ -9,6 +9,8 @@ import {render} from "./utils/render.js";
 
 const blocker = document.querySelector('#blocker');
 const instructions = document.querySelector('#instructions');
+const block = document.querySelector('#block');
+
 
 
 (() => {
@@ -53,7 +55,11 @@ const instructions = document.querySelector('#instructions');
     pointerControls.lock()
     instructions.style.visibility = 'hidden';
     blocker.style.visibility = 'hidden';
-
+  });
+  block.addEventListener('click', function () {
+    instructions.style.visibility = 'visible';
+    blocker.style.visibility = 'visible';
+    block.style.visibility='visible';
   });
 
   //render
