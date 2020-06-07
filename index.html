@@ -17,9 +17,11 @@
     }
 
     #loader {
-      top: 45%;
-      left: 45%;
       position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -50px 0px 0px -50px;
+
     }
 
     #loader div {
@@ -35,13 +37,6 @@
       width: 100%;
       height: 100%;
       visibility: hidden;
-    }
-
-    #startButton {
-      position: absolute;
-      visibility: hidden;
-      border-radius: 50%;
-      background-color: black;
     }
 
     #blocker {
@@ -82,29 +77,28 @@
       cursor: pointer;
     }
 
-    #instruct p{
-      color:white;
+    #instruct p {
+      color: white;
       text-align: right;
       margin-bottom: 0px;
     }
-      .location {
-        /*position: absolute;*/
-        right: 0;
-        visibility: hidden;
-        background-color: black;
-        width: 180px;
-        margin: 10px 10px 0 0;
 
-      }
+    .location {
+      visibility: hidden;
+      background-color: black;
+      width: 180px;
+      margin: 10px 10px 0 0;
+    }
 
-      .buttonContainer{
-        display: flex;
-        /*justify-content:flex-start;*/
-        flex-direction: column;
-        position: fixed;
-        top: 5%;
-        right: 0;
-              }
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+    }
+
+    .right{
+      right: 0;
     }
 
     #cafeteria {
@@ -139,14 +133,20 @@
 </head>
 <body>
 <div class="app">
-  <button id="startButton" type="button" class="btn btn-primary btn-lg" >Start</button>
-  <div class="buttonContainer">
+  <div class="button-container">
+    <button id="startButton" type="button" class="btn btn-primary btn-lg location">Start</button>
+    <button id="block" type="button" class="btn btn-primary btn-lg location">Instructions</button>
+  </div>
+
+  <div class="button-container right">
     <button id="cafeteria" type="button" class="btn btn-primary btn-lg location">Cafeteria</button>
     <button id="entrance" type="button" class="btn btn-primary btn-lg location">Entrance</button>
     <button id="secondFloor" type="button" class="btn btn-primary btn-lg location">Second Floor</button>
     <button id="thirdFloor" type="button" class="btn btn-primary btn-lg location">Third Floor</button>
     <button id="BigLectureHall" type="button" class="btn btn-primary btn-lg location">Big Lecture Hall</button>
     <button id="laboratory" type="button" class="btn btn-primary btn-lg location">Laboratory</button>
+
+
     <p id="position" class="location">Position: <span id="xyzPosition">0</span></p>
   </div>
 
